@@ -133,9 +133,10 @@ $.awesomeCropper = (inputAttachTo, options) ->
     tempImage.src = img.attr('src')
 
   setImages = (uri) ->
-    $sourceIm.attr('src', uri).load ->
+    $sourceIm.attr('src', uri).on('load', () ->
       removeLoading()
       setOriginalSize($sourceIm)
+      )
 
   drawImage = (img, x, y, width, height) ->
     oWidth = img.attr('data-original-width')
